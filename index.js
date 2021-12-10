@@ -1,4 +1,5 @@
 const express = require('express');
+const article = require('./routes/article.route');
 
 require('dotenv').config();
 
@@ -12,6 +13,8 @@ app.get('/', (_, res) => {
     message: 'First endpoint',
   })
 });
+
+app.use('/articles', article);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
