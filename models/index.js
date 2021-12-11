@@ -31,6 +31,10 @@ const sequelize = new Sequelize(database, username, password, {
 const article = require('./article.model')(sequelize, Sequelize);
 const comment = require('./comment.model')(sequelize, Sequelize);
 
+article.hasMany(comment, {
+  as: 'comments'
+})
+
 module.exports = {
   Sequelize,
   sequelize,

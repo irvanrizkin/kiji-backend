@@ -73,7 +73,9 @@ function findByCategory(req, res) {
 
 function findOne(req, res) {
   const { id } = req.params;
-  Article.findByPk(id)
+  Article.findByPk(id, {
+    include: 'comments',
+  })
     .then((article) => {
       if (article == null) {
         return res.status(404).json({
