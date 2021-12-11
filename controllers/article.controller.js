@@ -44,6 +44,33 @@ function findAll(_, res) {
     }))
 }
 
+function findByCategory(req, res) {
+  const { category } = req.query;
+  Article.findAll({
+    where: {
+      category: category.toLowerCase(),
+    }
+  })
+    .then((articles) => {
+      if (articles.length == 0) {
+        return res.status(200).json({
+          status: false,
+          message: `no articles exist in ${category}`,
+          articles
+        })
+      }
+      return res.status(200).json({
+        status: true,
+        message: `grabbed all articles from ${category}`,
+        articles
+      })
+    })
+    .catch((err) => res.status(422).json({
+      status: false,
+      err
+    }))
+}
+
 function findOne(req, res) {
   const { id } = req.params;
   Article.findByPk(id)
@@ -93,6 +120,7 @@ function _delete(req, res) {
 module.exports = {
   create,
   findAll,
+  findByCategory,
   findOne,
   delete: _delete,
 };
