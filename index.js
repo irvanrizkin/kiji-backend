@@ -10,10 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (_, res) => {
-  res.json({
-    status: true,
-    message: 'First endpoint',
-  })
+  res.sendFile(__dirname + '/index.html')
 });
 
 app.use('/articles', article);

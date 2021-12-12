@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Kiji API Docs</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4">Kiji API Documentation</h1>
+    <hr>
+    <h2 class="mb-3">Article</h2>
+    <div class="accordion" id="accordionArticle">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#GetAllArticle" aria-expanded="true" aria-controls="GetAllArticle">
+            Get All Articles
+          </button>
+        </h2>
+        <div id="GetAllArticle" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/articles/index</code>
+            <li class="my-1">Method</li>
+            <code>GET</code>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+  "status": true,
+  "message": "grabbed all articles",
+  "articles": [
+      {
+          "id": "7c526bb957b62af42e5d",
+          "title": "Lorem",
+          "category": "tech",
+          "content": "Keloreman",
+          "picture": "goog",
+          "source": "Wired",
+          "createdAt": "2021-12-11T10:07:51.703Z",
+          "updatedAt": "2021-12-11T10:07:51.703Z"
+      },
+      {
+          "id": "4a87014c2baf8c26a077",
+          "title": "Lorem",
+          "category": "politics",
+          "content": "Keloreman",
+          "picture": "goog",
+          "source": "Wired",
+          "createdAt": "2021-12-11T10:07:56.902Z",
+          "updatedAt": "2021-12-11T10:07:56.902Z"
+      },
+      {
+          "id": "8e533f286223165c8a04",
+          "title": "Ganyu",
+          "category": "celebrity",
+          "content": "Cryo",
+          "picture": "google.com",
+          "source": "D2C",
+          "createdAt": "2021-12-11T17:38:35.645Z",
+          "updatedAt": "2021-12-11T17:38:35.645Z"
+      }
+  ]
+}        
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#GetByCategory" aria-expanded="false" aria-controls="GetByCategory">
+            Get All Articles by Category
+          </button>
+        </h2>
+        <div id="GetByCategory" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/articles/search?category={category}</code>
+            <li class="my-1">Method</li>
+            <code>GET</code>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "grabbed all articles from celebrity",
+    "articles": [
+        {
+            "id": "8e533f286223165c8a04",
+            "title": "Ganyu",
+            "category": "celebrity",
+            "content": "Cryo",
+            "picture": "google.com",
+            "source": "D2C",
+            "createdAt": "2021-12-11T17:38:35.645Z",
+            "updatedAt": "2021-12-11T17:38:35.645Z"
+        }
+    ]
+}        
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#GetOneArticle" aria-expanded="false" aria-controls="GetOneArticle">
+            Get One Article
+          </button>
+        </h2>
+        <div id="GetOneArticle" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/articles/show/{id}</code>
+            <li class="my-1">Method</li>
+            <code>GET</code>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "grabbed one article",
+    "article": {
+        "id": "8e533f286223165c8a04",
+        "title": "Ganyu",
+        "category": "celebrity",
+        "content": "Cryo",
+        "picture": "google.com",
+        "source": "D2C",
+        "createdAt": "2021-12-11T17:38:35.645Z",
+        "updatedAt": "2021-12-11T17:38:35.645Z",
+        "comments": [
+            {
+                "id": "869e031b055528f7fba0",
+                "name": "Raiden",
+                "comment": "Eien no Tameni",
+                "createdAt": "2021-12-11T17:40:25.632Z",
+                "updatedAt": "2021-12-11T17:40:25.632Z",
+                "articleId": "8e533f286223165c8a04"
+            },
+            {
+                "id": "27c44490893e573cbe82",
+                "name": "Shogun-sama",
+                "comment": "Eien no Tameni",
+                "createdAt": "2021-12-11T17:40:33.987Z",
+                "updatedAt": "2021-12-11T17:40:33.987Z",
+                "articleId": "8e533f286223165c8a04"
+            }
+        ]
+    }
+}        
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#DeleteArticle" aria-expanded="false" aria-controls="DeleteArticle">
+            Delete One Article
+          </button>
+        </h2>
+        <div id="DeleteArticle" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/articles/destroy/{id}</code>
+            <li class="my-1">Method</li>
+            <code>DELETE</code>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "deleted one article"
+}        
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#PostArticle" aria-expanded="false" aria-controls="PostArticle">
+            Post New Article
+          </button>
+        </h2>
+        <div id="PostArticle" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/articles/store</code>
+            <li class="my-1">Method</li>
+            <code>POST</code>
+            <li class="my-1">Body</li>
+            <ul>
+              Accepted Category
+              <ul>
+                <li>tech</li>
+                <li>celebrity</li>
+                <li>world</li>
+                <li>politics</li>
+              </ul>
+            </ul>
+            <pre>
+<code>
+{
+    "title": "Ganyu",
+    "content": "Cryo",
+    "picture": "google.com",
+    "source": "D2C",
+    "category": "world"
+}     
+</code>
+            </pre>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "new article created",
+    "article": {
+        "id": "629490218a8235b14456",
+        "title": "Ganyu",
+        "content": "Cryo",
+        "picture": "google.com",
+        "source": "D2C",
+        "category": "world",
+        "updatedAt": "2021-12-12T13:39:46.184Z",
+        "createdAt": "2021-12-12T13:39:46.184Z"
+    }
+}      
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="mb-3 mt-3">Comment</h2>
+    <div class="accordion" id="accordionComment">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PostComment" aria-expanded="true" aria-controls="PostComment">
+            Post New Comment
+          </button>
+        </h2>
+        <div id="PostComment" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/comments/store</code>
+            <li class="my-1">Method</li>
+            <code>POST</code>
+            <li class="my-1">Body</li>
+            <pre>
+<code>
+{
+    "name": "Shogun-sama",
+    "comment": "Eien no Tameni",
+    "articleId": "8e533f286223165c8a04"
+}  
+</code>
+            </pre>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "new comment added",
+    "comment": {
+        "id": "0e83d3a81e0617af3eaa",
+        "name": "Shogun-sama",
+        "comment": "Eien no Tameni",
+        "articleId": "8e533f286223165c8a04",
+        "updatedAt": "2021-12-12T13:56:40.625Z",
+        "createdAt": "2021-12-12T13:56:40.625Z"
+    }
+}  
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#DeleteComment" aria-expanded="false" aria-controls="DeleteComment">
+            Delete One Comment
+          </button>
+        </h2>
+        <div id="DeleteComment" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/comments/destroy/{id}</code>
+            <li class="my-1">Method</li>
+            <code>DELETE</code>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "deleted one comment"
+}     
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="mb-3 mt-3">User</h2>
+    <div class="accordion mb-5" id="accordionUser">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#Login" aria-expanded="true" aria-controls="Login">
+            Login
+          </button>
+        </h2>
+        <div id="Login" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li class="my-1">URL</li>
+            <code>https://kiji-backend.herokuapp.com/users/login</code>
+            <li class="my-1">Method</li>
+            <code>POST</code>
+            <li class="my-1">Body</li>
+            <pre>
+<code>
+{
+    "email": "admin",
+    "password": "admin"
+}  
+</code>
+            </pre>
+            <li class="my-1">Response</li>
+            <pre>
+<code>
+{
+    "status": true,
+    "message": "logged in",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAa2lqaS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MzkzMTI2Njh9.dQQcURv84AHE_TCcfkTiewWstr4Yx00JwpWNe1E3XlM"
+}
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
